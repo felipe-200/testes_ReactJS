@@ -1,24 +1,23 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import { Dropdown } from './components/Dropdown'
+import GlobalStyle from './styles/Global'
 
 function App() {
+  const [itemSelected, setItemSelected] = useState<string | null>(null)
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <GlobalStyle />
+      {
+        itemSelected ? <h3 style={{ color: "#3D2B3D" }}>Your Item {itemSelected}</h3> : false
+      }
+
+      <Dropdown
+        title="Dropdown"
+        options={['Item1', 'Item2', 'Item3', 'Item4', 'Item5', 'Item6']}
+        onSelect={(value) => setItemSelected(value)}
+      />
     </div>
   );
 }
