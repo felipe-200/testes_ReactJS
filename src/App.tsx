@@ -10,7 +10,7 @@ function App() {
     <div className="App">
       <GlobalStyle />
       {
-        itemSelected ? <h3 style={{ color: "#3D2B3D" }}>Your Item {itemSelected}</h3> : false
+        itemSelected && <h3 style={{ color: "#3D2B3D" }}>Your Item {itemSelected}</h3>
       }
 
       <Dropdown

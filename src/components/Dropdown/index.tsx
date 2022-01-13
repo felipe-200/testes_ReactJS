@@ -5,7 +5,7 @@ import { DropdownItem, DropdownContent } from "../DropdownContainer"
 interface DropdownProps {
   title: string,
   options: Array<string>
-  onSelect: (option: string) => void
+  onSelect: (option: string | null) => void
 }
 
 export const Dropdown = ({ title, options, onSelect }: DropdownProps) => {
@@ -28,20 +28,21 @@ export const Dropdown = ({ title, options, onSelect }: DropdownProps) => {
       </Button>
 
       {
-        isOpen ? (
-          <DropdownContent>
+        isOpen && (
+          <DropdownContent role="menu">
             {options.map((value, index) => {
               return (
                 <DropdownItem
                   key={index}
                   onClick={() => handleSelection(value)}
+                  role="menuitem"
                 >
-                  - {value}
+                  {value}
                 </DropdownItem>
               )
             })}
           </DropdownContent>
-        ) : false
+        )
       }
 
     </div>
